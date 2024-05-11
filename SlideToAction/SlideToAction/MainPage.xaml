@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:SlideToAction.View"
+             xmlns:viewmodels="clr-namespace:SlideToAction.ViewModels"
+             x:Class="SlideToAction.MainPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+
+      <Border  HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
+                                                   HeightRequest="{OnPlatform Android='46', iOS='40'}"
+                                                   StrokeShape="RoundRectangle 20"
+                                                   Margin="20">
+                                            <Grid BackgroundColor="MediumSeaGreen"
+                                                  Margin="0,0,-5,0"
+                                                  HeightRequest="{OnPlatform Android='46', iOS='40'}">
+
+                                                <Label Text="Slide to unlock " HorizontalOptions="CenterAndExpand"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       TextColor="White"/>
+
+                                                <views:CustomSlideToAction x:Name="slider" 
+                                                                     HeightRequest="30" 
+                                                                     BackgroundColor="Transparent"
+                                                                     Margin = "{OnPlatform Android='25,0,25,0', iOS='0,0,5,0'}"
+                                                                     IsDragCompleted="{Binding DragCompleted}"
+                                                                     SliderValue="{Binding DragValue}"
+                                                                     Value="{Binding DragValue}"
+                                                                     DragCompletedCommand="{Binding SliderDragCompleted}"
+                                                                     HasMaxSliderReached="{Binding HasReachedMaxSlider}"
+                                                                     Maximum="100"/>
+                                            </Grid>
+                                        </Border>
+</ContentPage>
+
